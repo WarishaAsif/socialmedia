@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>ConnectHub | Social Media</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- =========================
+         AUTH SECTION
+    ========================== -->
+
+    <div id="authSection" class="auth-container">
+
+        <div class="auth-box">
+
+            <h1>ConnectHub</h1>
+
+            <p class="subtitle">
+                Connect. Share. Follow.
+            </p>
+
+            <!-- LOGIN -->
+
+            <div id="loginForm">
+
+                <h2>Login</h2>
+
+                <input
+                    type="email"
+                    id="loginEmail"
+                    placeholder="Email"
+                >
+
+                <input
+                    type="password"
+                    id="loginPassword"
+                    placeholder="Password"
+                >
+
+                <button onclick="login()">
+                    Login
+                </button>
+
+                <p>
+                    Don't have an account?
+                    <span
+                        onclick="showRegister()"
+                        class="link"
+                    >
+                        Register
+                    </span>
+                </p>
+
+            </div>
+
+
+            <!-- REGISTER -->
+
+            <div
+                id="registerForm"
+                style="display: none;"
+            >
+
+                <h2>Create Account</h2>
+
+                <input
+                    type="text"
+                    id="registerName"
+                    placeholder="Full Name"
+                >
+
+                <input
+                    type="email"
+                    id="registerEmail"
+                    placeholder="Email"
+                >
+
+                <input
+                    type="password"
+                    id="registerPassword"
+                    placeholder="Password"
+                >
+
+                <button onclick="register()">
+                    Register
+                </button>
+
+                <p>
+                    Already have an account?
+                    <span
+                        onclick="showLogin()"
+                        class="link"
+                    >
+                        Login
+                    </span>
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         MAIN APP
+    ========================== -->
+
+    <div
+        id="appSection"
+        style="display: none;"
+    >
+
+        <!-- NAVBAR -->
+
+        <nav>
+
+            <div class="logo">
+                ConnectHub
+            </div>
+
+            <div class="nav-buttons">
+
+                <button onclick="showFeed()">
+                    Home
+                </button>
+
+                <button onclick="showDiscover()">
+                    Discover
+                </button>
+
+                <button onclick="showMyProfile()">
+                    My Profile
+                </button>
+
+                <button
+                    onclick="logout()"
+                    class="logout-btn"
+                >
+                    Logout
+                </button>
+
+            </div>
+
+        </nav>
+
+
+        <!-- =========================
+             MAIN CONTENT
+        ========================== -->
+
+        <main>
+
+            <!-- CREATE POST -->
+
+            <section class="create-post">
+
+                <h2>
+                    Create a Post
+                </h2>
+
+                <textarea
+                    id="postContent"
+                    placeholder="What's on your mind?"
+                ></textarea>
+
+
+                <!-- UPLOAD OPTIONS -->
+
+                <div class="post-upload">
+
+                    <!-- GALLERY -->
+
+                    <label class="upload-btn">
+
+                        🖼️ Gallery
+
+                        <input
+                            type="file"
+                            id="postImage"
+                            accept="image/*"
+                            hidden
+                        >
+
+                    </label>
+
+
+                    <!-- CAMERA -->
+
+                    <button
+                        type="button"
+                        class="upload-btn"
+                        onclick="openCamera()"
+                    >
+                        📷 Camera
+                    </button>
+
+                </div>
+
+
+                <!-- LIVE CAMERA -->
+
+                <div
+                    id="cameraBox"
+                    class="camera-box"
+                    style="display: none;"
+                >
+
+                    <video
+                        id="cameraVideo"
+                        autoplay
+                        playsinline
+                    ></video>
+
+
+                    <div class="camera-buttons">
+
+                        <button
+                            type="button"
+                            onclick="takePhoto()"
+                        >
+                            📸 Take Photo
+                        </button>
+
+                        <button
+                            type="button"
+                            onclick="closeCamera()"
+                        >
+                            ✕ Close
+                        </button>
+
+                    </div>
+
+                </div>
+
+
+                <!-- HIDDEN CANVAS -->
+
+                <canvas
+                    id="cameraCanvas"
+                    style="display: none;"
+                ></canvas>
+
+
+                <!-- IMAGE PREVIEW -->
+
+                <div
+                    id="imagePreview"
+                    class="image-preview"
+                ></div>
+
+
+                <!-- POST BUTTON -->
+
+                <button onclick="createPost()">
+                    Post
+                </button>
+
+            </section>
+
+
+            <!-- =========================
+                 PROFILE SECTION
+            ========================== -->
+
+            <section
+                id="profileSection"
+                style="display: none;"
+            ></section>
+
+
+            <!-- =========================
+                 FEED SECTION
+            ========================== -->
+
+            <section id="feedSection">
+
+                <h2>
+                    Latest Posts
+                </h2>
+
+                <div id="postsContainer">
+
+                    <p>
+                        Loading posts...
+                    </p>
+
+                </div>
+
+            </section>
+
+
+            <!-- =========================
+                 DISCOVER SECTION
+            ========================== -->
+
+            <section
+                id="discoverSection"
+                style="display: none;"
+            >
+
+                <div class="discover-header">
+
+                    <h1>
+                        Discover People
+                    </h1>
+
+                    <p>
+                        Find people and connect with the community.
+                    </p>
+
+                </div>
+
+
+                <div
+                    id="usersContainer"
+                    class="users-grid"
+                >
+
+                    <div class="post-card">
+
+                        <p>
+                            Loading people...
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </section>
+
+        </main>
+
+    </div>
+
+
+    <!-- JAVASCRIPT -->
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>
